@@ -1,0 +1,34 @@
+# Session outline
+
+## Session 1
+Install Flask
+Basic webserver
+Send HTML
+Receive form data
+Send custom HTML response
+
+## Session 2
+Static files
+Share demo files to get started
+Client send json via Javascript
+Flask send json response to Javascript
+Javascript update page
+
+## Session 3
+Create database
+Register (username, display name, upload avatar) and login
+Personalise HTML once logged in
+
+## Session 4
+Send message
+Save to database
+
+## Session 5
+Get messages
+Display on HTML
+
+## Session 6
+Rooms
+
+## Session 7
+

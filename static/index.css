@@ -22,21 +22,28 @@ html, body {
 .container {
     top: 64px;
     width: 100%;
-    padding: 20px;
+    padding: 0;
     position: fixed;
     overflow-y: scroll;
+    height: calc(100% - 164px)
 }
-.container div {
+.chats {
     width: 600px;
     padding: 5px;
     margin: 0 auto 0 auto;
 }
 .hello {
+    width: 600px;
+    padding: 5px;
+    margin: 0 auto 0 auto;
     font-size: 20pt;
 }
 .messagebox {
+    width: 100%;
+    padding: 10px;
     background-color: #eee;
-    border-radius: 20px;
+    position: fixed;
+    bottom: 0;
 }
 @media only screen and (hover: none) and (pointer: coarse){
     .container {
@@ -54,6 +61,7 @@ input {
     border-radius: 5px;
 }
 input[type='text'] {
+    width: 70vw;
 }
 input[type='button'], input[type='submit'] {
     background-color: #1e90ff;
@@ -63,3 +71,33 @@ input[type='button'], input[type='submit'] {
 input[type='button']:hover {
     background-color: #0000cd;
 }
+
+.messageGrid {
+    background-color: #eee;
+    border-radius: 5px;
+    padding: 5px;
+    margin: 5px;
+    display: grid;
+    grid-template-columns: 42px 1fr;
+    grid-template-rows: 1fr 1fr;
+    gap: 0px 0px;
+    grid-template-areas:
+      "messageAvatar messageName"
+      "messageAvatar messageContent";
+  }
+  
+.messageAvatar { 
+    grid-area: messageAvatar; 
+    width: 32px;
+    height: 32px;
+    background-color: #fff;
+    display: block;
+}
+
+.messageName { 
+    grid-area: messageName; 
+    font-size: xx-small;
+}
+
+.messageContent { grid-area: messageContent; }
+  

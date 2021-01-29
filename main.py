@@ -4,6 +4,7 @@ from flask_sqlalchemy import SQLAlchemy
 import os
 from datetime import datetime
 from dataclasses import dataclass
+import json
 
 # Create the object for our webserver
 app = Flask(__name__)
@@ -27,8 +28,8 @@ class Message(db.Model):
     dateTime = db.Column(db.DateTime, default=datetime.utcnow)
     ip = db.Column(db.String(20))
     message = db.Column(db.String(500))
-    def __repr__(self):
-        return self.__dict__
+    def as_dict(self):
+        return {"id": self.id, "displayName": self.displayName, "dateTime":self.dateTime.timestamp(), "message":self.message}
 
 # Web server
 
@@ -50,28 +51,34 @@ def whoami():
     if 'name' in session:
         return jsonify({'name': session['name']})
     else:
-        return jsonify({'name': 'not signed in'})
+        return "Error: Not logged in"
 
 @app.route('/newmessage', methods=["POST","GET"])
 def newmessage():
-    ip = request.remote_addr
-    message = request.values['message']
-    new_message = Message(
-        username=session['name'], 
-        displayName=session['name'], 
-        ip=ip, 
-        message=message,
-        dateTime=datetime.utcnow())
-    db.session.add(new_message)
-    db.session.commit()
-    return jsonify({'result': 'ok'})
+    if 'message' in request.values and 'name' in session:
+        new_message = Message(
+            username=session['name'], 
+            displayName=session['name'], 
+            ip=request.remote_addr, 
+            message=request.values['message'],
+            dateTime=datetime.utcnow())
+        db.session.add(new_message)
+        db.session.commit()
+        return jsonify({'result': 'ok'})
+    else:
+        return "Error: Not logged in, or no message received"
     
-@app.route('/getmessages')
+@app.route('/getmessages',methods=['GET'])
 def getmessages():
-    msgs = Message.query.order_by(Message.dateTime).limit(100).all()
-    #for msg in msgs:
-    #    print(msg.message)
-    return jsonify(msgs)
+    if 'since' in request.args:
+        since = int(request.args['since'])
+    else:
+        since = 0
+    msgs = Message.query.filter(Message.id > since).order_by(Message.dateTime.desc()).limit(100).all()
+    reply = []
+    for msg in msgs:
+        reply.insert(0,msg.as_dict())
+    return jsonify(reply)
 
 if __name__ == '__main__':
     if not os.path.exists(app.config['SESSION_FILE_DIR']):
