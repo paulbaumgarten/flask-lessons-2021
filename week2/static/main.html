@@ -8,12 +8,15 @@
 <body>
     <div class="banner"><img src="/static/icon.png"><span>Whatsthat</span></div>
     <div class="container">
-        <div class="signin userarea">
-            <form method="POST" action="/signin">
-                <input type="text" name="signinname" placeholder="Your display name...">
-                <input type="submit" value="Sign in">
-            </form>
+        <div class="hello">
+        </div>
+        <div class="chats" id="chatcontent">
         </div>
     </div>
+    <div class="messagebox">
+        <input type="text" name="messagetext" id="messagetext" placeholder="Your message...">
+        <input type="button" name="messagebutton" id="messagebutton" value="Send">
+    </div>
+<script type="text/javascript" src="/static/main.js"></script>
 </body>
 </html>

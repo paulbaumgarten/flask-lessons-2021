@@ -1,0 +1,702 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>README.md</title>
+<meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+
+<style>
+/* https://github.com/microsoft/vscode/blob/master/extensions/markdown-language-features/media/markdown.css */
+/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) Microsoft Corporation. All rights reserved.
+ *  Licensed under the MIT License. See License.txt in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
+
+body {
+	font-family: var(--vscode-markdown-font-family, -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif);
+	font-size: var(--vscode-markdown-font-size, 14px);
+	padding: 0 26px;
+	line-height: var(--vscode-markdown-line-height, 22px);
+	word-wrap: break-word;
+}
+
+#code-csp-warning {
+	position: fixed;
+	top: 0;
+	right: 0;
+	color: white;
+	margin: 16px;
+	text-align: center;
+	font-size: 12px;
+	font-family: sans-serif;
+	background-color:#444444;
+	cursor: pointer;
+	padding: 6px;
+	box-shadow: 1px 1px 1px rgba(0,0,0,.25);
+}
+
+#code-csp-warning:hover {
+	text-decoration: none;
+	background-color:#007acc;
+	box-shadow: 2px 2px 2px rgba(0,0,0,.25);
+}
+
+body.scrollBeyondLastLine {
+	margin-bottom: calc(100vh - 22px);
+}
+
+body.showEditorSelection .code-line {
+	position: relative;
+}
+
+body.showEditorSelection .code-active-line:before,
+body.showEditorSelection .code-line:hover:before {
+	content: "";
+	display: block;
+	position: absolute;
+	top: 0;
+	left: -12px;
+	height: 100%;
+}
+
+body.showEditorSelection li.code-active-line:before,
+body.showEditorSelection li.code-line:hover:before {
+	left: -30px;
+}
+
+.vscode-light.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.15);
+}
+
+.vscode-light.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.40);
+}
+
+.vscode-light.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-dark.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.4);
+}
+
+.vscode-dark.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.60);
+}
+
+.vscode-dark.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-high-contrast.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 160, 0, 0.7);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 160, 0, 1);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+img {
+	max-width: 100%;
+	max-height: 100%;
+}
+
+a {
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+a:focus,
+input:focus,
+select:focus,
+textarea:focus {
+	outline: 1px solid -webkit-focus-ring-color;
+	outline-offset: -1px;
+}
+
+hr {
+	border: 0;
+	height: 2px;
+	border-bottom: 2px solid;
+}
+
+h1 {
+	padding-bottom: 0.3em;
+	line-height: 1.2;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+}
+
+h1, h2, h3 {
+	font-weight: normal;
+}
+
+table {
+	border-collapse: collapse;
+}
+
+table > thead > tr > th {
+	text-align: left;
+	border-bottom: 1px solid;
+}
+
+table > thead > tr > th,
+table > thead > tr > td,
+table > tbody > tr > th,
+table > tbody > tr > td {
+	padding: 5px 10px;
+}
+
+table > tbody > tr + tr > td {
+	border-top: 1px solid;
+}
+
+blockquote {
+	margin: 0 7px 0 5px;
+	padding: 0 16px 0 10px;
+	border-left-width: 5px;
+	border-left-style: solid;
+}
+
+code {
+	font-family: Menlo, Monaco, Consolas, "Droid Sans Mono", "Courier New", monospace, "Droid Sans Fallback";
+	font-size: 1em;
+	line-height: 1.357em;
+}
+
+body.wordWrap pre {
+	white-space: pre-wrap;
+}
+
+pre:not(.hljs),
+pre.hljs code > div {
+	padding: 16px;
+	border-radius: 3px;
+	overflow: auto;
+}
+
+pre code {
+	color: var(--vscode-editor-foreground);
+	tab-size: 4;
+}
+
+/** Theming */
+
+.vscode-light pre {
+	background-color: rgba(220, 220, 220, 0.4);
+}
+
+.vscode-dark pre {
+	background-color: rgba(10, 10, 10, 0.4);
+}
+
+.vscode-high-contrast pre {
+	background-color: rgb(0, 0, 0);
+}
+
+.vscode-high-contrast h1 {
+	border-color: rgb(0, 0, 0);
+}
+
+.vscode-light table > thead > tr > th {
+	border-color: rgba(0, 0, 0, 0.69);
+}
+
+.vscode-dark table > thead > tr > th {
+	border-color: rgba(255, 255, 255, 0.69);
+}
+
+.vscode-light h1,
+.vscode-light hr,
+.vscode-light table > tbody > tr + tr > td {
+	border-color: rgba(0, 0, 0, 0.18);
+}
+
+.vscode-dark h1,
+.vscode-dark hr,
+.vscode-dark table > tbody > tr + tr > td {
+	border-color: rgba(255, 255, 255, 0.18);
+}
+
+</style>
+
+<style>
+/* Tomorrow Theme */
+/* http://jmblog.github.com/color-themes-for-google-code-highlightjs */
+/* Original theme - https://github.com/chriskempson/tomorrow-theme */
+
+/* Tomorrow Comment */
+.hljs-comment,
+.hljs-quote {
+	color: #8e908c;
+}
+
+/* Tomorrow Red */
+.hljs-variable,
+.hljs-template-variable,
+.hljs-tag,
+.hljs-name,
+.hljs-selector-id,
+.hljs-selector-class,
+.hljs-regexp,
+.hljs-deletion {
+	color: #c82829;
+}
+
+/* Tomorrow Orange */
+.hljs-number,
+.hljs-built_in,
+.hljs-builtin-name,
+.hljs-literal,
+.hljs-type,
+.hljs-params,
+.hljs-meta,
+.hljs-link {
+	color: #f5871f;
+}
+
+/* Tomorrow Yellow */
+.hljs-attribute {
+	color: #eab700;
+}
+
+/* Tomorrow Green */
+.hljs-string,
+.hljs-symbol,
+.hljs-bullet,
+.hljs-addition {
+	color: #718c00;
+}
+
+/* Tomorrow Blue */
+.hljs-title,
+.hljs-section {
+	color: #4271ae;
+}
+
+/* Tomorrow Purple */
+.hljs-keyword,
+.hljs-selector-tag {
+	color: #8959a8;
+}
+
+.hljs {
+	display: block;
+	overflow-x: auto;
+	color: #4d4d4c;
+	padding: 0.5em;
+}
+
+.hljs-emphasis {
+	font-style: italic;
+}
+
+.hljs-strong {
+	font-weight: bold;
+}
+</style>
+
+<style>
+/*
+ * Markdown PDF CSS
+ */
+
+ body {
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif, "Meiryo";
+	padding: 0 12px;
+}
+
+pre {
+	background-color: #f8f8f8;
+	border: 1px solid #cccccc;
+	border-radius: 3px;
+	overflow-x: auto;
+	white-space: pre-wrap;
+	overflow-wrap: break-word;
+}
+
+pre:not(.hljs) {
+	padding: 23px;
+	line-height: 19px;
+}
+
+blockquote {
+	background: rgba(127, 127, 127, 0.1);
+	border-color: rgba(0, 122, 204, 0.5);
+}
+
+.emoji {
+	height: 1.4em;
+}
+
+code {
+	font-size: 14px;
+	line-height: 19px;
+}
+
+/* for inline code */
+:not(pre):not(.hljs) > code {
+	color: #C9AE75; /* Change the old color so it seems less like an error */
+	font-size: inherit;
+}
+
+/* Page Break : use <div class="page"/> to insert page break
+-------------------------------------------------------- */
+.page {
+	page-break-after: always;
+}
+
+</style>
+
+<script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+</head>
+<body>
+  <script>
+    mermaid.initialize({
+      startOnLoad: true,
+      theme: document.body.classList.contains('vscode-dark') || document.body.classList.contains('vscode-high-contrast')
+          ? 'dark'
+          : 'default'
+    });
+  </script>
+<h1 id="web-site-and-server-programming">Web site and server programming</h1>
+<p>Coding club, term 2, 2020/21</p>
+<h2 id="week-1">Week 1</h2>
+<ul>
+<li>Install Python and VS Code as per instructions at https://pbaumgarten.com/codingclub/python_setup_instructions.pdf</li>
+</ul>
+<p>main.py</p>
+<pre class="hljs"><code><div><span class="hljs-keyword">from</span> flask <span class="hljs-keyword">import</span> Flask, send_file
+
+app = Flask(__name__)
+
+<span class="hljs-meta">@app.route('/') # Signifies page</span>
+<span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">index</span><span class="hljs-params">()</span>:</span> <span class="hljs-comment"># '/' needs function 'index', otherwise name function same as route</span>
+    <span class="hljs-keyword">return</span> <span class="hljs-string">"Hi there"</span>
+
+<span class="hljs-meta">@app.route("/page2") # Type this next to 'localhost' to go to the page</span>
+<span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">page2</span><span class="hljs-params">()</span>:</span>
+    <span class="hljs-keyword">return</span> <span class="hljs-string">"This is page 2. This is fun"</span>
+
+<span class="hljs-meta">@app.route("/page1")</span>
+<span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">page1</span><span class="hljs-params">()</span>:</span>
+    <span class="hljs-keyword">return</span> send_file(<span class="hljs-string">'page1.html'</span>)
+
+app.run(host=<span class="hljs-string">'0.0.0.0'</span>, port=<span class="hljs-number">80</span>, debug=<span class="hljs-literal">True</span>)
+</div></code></pre>
+<p>page1.html</p>
+<pre class="hljs"><code><div><span class="hljs-meta">&lt;!DOCTYPE <span class="hljs-meta-keyword">html</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">html</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">body</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">h1</span>&gt;</span>Page 1<span class="hljs-tag">&lt;/<span class="hljs-name">h1</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>This is a paragraph. We're learning HTML!<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">body</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">html</span>&gt;</span>
+</div></code></pre>
+<h2 id="week-2">Week 2</h2>
+<ul>
+<li>Download files from here https://pbaumgarten.com/codingclub/202021-t2/week02files.zip</li>
+</ul>
+<p>Update your <code>main.py</code> to the following</p>
+<pre class="hljs"><code><div><span class="hljs-keyword">from</span> flask <span class="hljs-keyword">import</span> Flask, send_file, request
+
+app = Flask(__name__)
+
+<span class="hljs-meta">@app.route('/') # Signifies page</span>
+<span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">index</span><span class="hljs-params">()</span>:</span> <span class="hljs-comment"># '/' needs function 'index', otherwise name function same as route</span>
+    <span class="hljs-keyword">return</span> <span class="hljs-string">"Hi there"</span>
+
+<span class="hljs-meta">@app.route("/page2") # Type this next to 'localhost' to go to the page</span>
+<span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">page2</span><span class="hljs-params">()</span>:</span>
+    <span class="hljs-keyword">return</span> <span class="hljs-string">"This is page 2. This is fun"</span>
+
+<span class="hljs-meta">@app.route("/page1")</span>
+<span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">page1</span><span class="hljs-params">()</span>:</span>
+    <span class="hljs-keyword">return</span> send_file(<span class="hljs-string">'page1.html'</span>)
+
+<span class="hljs-meta">@app.route("/register", methods=['POST'])</span>
+<span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">register</span><span class="hljs-params">()</span>:</span>
+    userid = request.values[<span class="hljs-string">'userid'</span>]
+    displayName = request.values[<span class="hljs-string">'displayName'</span>]
+    email = request.values[<span class="hljs-string">'email'</span>]
+    password = request.values[<span class="hljs-string">'password'</span>]
+    print(userid)
+    print(displayName)
+    print(email)
+    print(password)
+    <span class="hljs-keyword">return</span> <span class="hljs-string">"All done"</span>
+
+app.run(host=<span class="hljs-string">'0.0.0.0'</span>, port=<span class="hljs-number">80</span>, debug=<span class="hljs-literal">True</span>)
+</div></code></pre>
+<p>Create <code>static/register.js</code> as follows</p>
+<pre class="hljs"><code><div>
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">runChecks</span>(<span class="hljs-params">event</span>) </span>{
+    <span class="hljs-keyword">let</span> userName = <span class="hljs-built_in">document</span>.querySelector(<span class="hljs-string">"[name='userid']"</span>).value;
+    <span class="hljs-keyword">let</span> displayName = <span class="hljs-built_in">document</span>.querySelector(<span class="hljs-string">"[name='displayName']"</span>).value;
+    <span class="hljs-keyword">let</span> email = <span class="hljs-built_in">document</span>.querySelector(<span class="hljs-string">"[name='email']"</span>).value;
+    <span class="hljs-keyword">let</span> password = <span class="hljs-built_in">document</span>.querySelector(<span class="hljs-string">"[name='password']"</span>).value;
+    <span class="hljs-keyword">let</span> password2 = <span class="hljs-built_in">document</span>.querySelector(<span class="hljs-string">"[name='password2']"</span>).value;
+    <span class="hljs-keyword">if</span> (userName.length == <span class="hljs-number">0</span>) {
+        alert(<span class="hljs-string">"Username can not be empty! You numpty!"</span>);
+        event.preventDefault()
+    }    
+    <span class="hljs-keyword">if</span> (displayName.length == <span class="hljs-number">0</span>) {
+        alert(<span class="hljs-string">"Display name can not be empty! You numpty!"</span>);
+        event.preventDefault()
+    }    
+    <span class="hljs-keyword">if</span> (email.length == <span class="hljs-number">0</span>) {
+        alert(<span class="hljs-string">"Email address can not be empty! You numpty!"</span>);
+        event.preventDefault()
+    }    
+    <span class="hljs-keyword">if</span> (password.length == <span class="hljs-number">0</span>) {
+        alert(<span class="hljs-string">"Password can not be empty! You numpty!"</span>);
+        event.preventDefault()
+    }
+    <span class="hljs-keyword">if</span> (password != password2) {
+        alert(<span class="hljs-string">"Passwords do not match! You numpty!"</span>);
+        event.preventDefault()
+    }
+}
+
+<span class="hljs-built_in">document</span>.querySelector(<span class="hljs-string">'#registrationForm'</span>).onsubmit = runChecks;
+</div></code></pre>
+<h2 id="week-3">Week 3</h2>
+<p>Download <code>models.py</code> and <code>whatsthat.db</code> from coding club website</p>
+<p>In your terminal: <code>pip install -- user flask-sqlalchemy flask_session</code></p>
+<p>Setup Python to receive registration information and save it to the database by editing the top of your <code>main.py</code>...</p>
+<pre class="hljs"><code><div><span class="hljs-keyword">from</span> flask <span class="hljs-keyword">import</span> *
+<span class="hljs-keyword">from</span> flask_session <span class="hljs-keyword">import</span> Session
+<span class="hljs-keyword">from</span> flask_sqlalchemy <span class="hljs-keyword">import</span> SQLAlchemy
+<span class="hljs-keyword">import</span> sqlalchemy
+
+<span class="hljs-comment"># Create and configure Flask object</span>
+app = Flask(__name__)
+app.config[<span class="hljs-string">'SECRET_KEY'</span>] = <span class="hljs-string">'some random code here'</span>
+app.config[<span class="hljs-string">'MAX_CONTENT_LENGTH'</span>] = <span class="hljs-number">16</span> * <span class="hljs-number">2</span>**<span class="hljs-number">20</span> <span class="hljs-comment"># 16 MB maximum upload</span>
+app.config[<span class="hljs-string">'ALLOWED_EXTENSIONS'</span>] = set([<span class="hljs-string">'pdf'</span>, <span class="hljs-string">'png'</span>, <span class="hljs-string">'jpg'</span>, <span class="hljs-string">'jpeg'</span>, <span class="hljs-string">'gif'</span>])
+app.config[<span class="hljs-string">'SESSION_TYPE'</span>] = <span class="hljs-string">'filesystem'</span>
+app.config[<span class="hljs-string">'SESSION_FILE_DIR'</span>] = os.path.join(app.root_path, <span class="hljs-string">"cache"</span>) 
+app.config[<span class="hljs-string">'SESSION_FILE_THRESHOLD'</span>] = <span class="hljs-number">1000</span> <span class="hljs-comment"># Allow up to 1000 sessions</span>
+app.config[<span class="hljs-string">'SQLALCHEMY_DATABASE_URI'</span>] = <span class="hljs-string">'sqlite:///whatsthat.db'</span>
+app.config[<span class="hljs-string">'SQLALCHEMY_TRACK_MODIFICATIONS'</span>] = <span class="hljs-literal">False</span>
+Session(app)
+db = SQLAlchemy(app)
+<span class="hljs-keyword">from</span> models <span class="hljs-keyword">import</span> *    <span class="hljs-comment"># Import models.py</span>
+</div></code></pre>
+<p>New routes to add...</p>
+<pre class="hljs"><code><div><span class="hljs-meta">@app.route('/register', methods=["POST"])</span>
+<span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">user_register</span><span class="hljs-params">()</span>:</span>
+    error = <span class="hljs-string">""</span>
+    <span class="hljs-comment"># Was an avatar uploaded?</span>
+    <span class="hljs-keyword">if</span> request.files[<span class="hljs-string">'avatar'</span>].filename != <span class="hljs-string">''</span>:
+        f = request.files[<span class="hljs-string">'avatar'</span>]
+        dot = f.filename.rfind(<span class="hljs-string">"."</span>)
+        extension = f.filename[dot:].lower()
+        avatar = request.values[<span class="hljs-string">'email'</span>].replace(<span class="hljs-string">"@"</span>,<span class="hljs-string">"_at_"</span>) + extension
+        f.save(app.root_path + <span class="hljs-string">'/photos/'</span> + avatar)
+    <span class="hljs-keyword">else</span>:
+        avatar = <span class="hljs-string">""</span>
+    user = User(userid=request.values[<span class="hljs-string">'userid'</span>], 
+        displayName=request.values[<span class="hljs-string">'displayName'</span>], 
+        password=request.values[<span class="hljs-string">'password'</span>], <span class="hljs-comment"># WARNING THIS IS NOT SECURE</span>
+        email=request.values[<span class="hljs-string">'email'</span>], 
+        avatar=avatar)
+    db.session.add(user)
+    db.session.commit()
+    <span class="hljs-keyword">return</span> redirect(<span class="hljs-string">"/static/login.html"</span>)
+</div></code></pre>
+<h2 id="week-4">Week 4</h2>
+<p>Create new routes in <code>main.py</code>...</p>
+<pre class="hljs"><code><div><span class="hljs-meta">@app.route('/login', methods=["POST"])</span>
+<span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">user_login</span><span class="hljs-params">()</span>:</span>
+    print(<span class="hljs-string">"/login: "</span>+request.values[<span class="hljs-string">'userid'</span>])
+    uid = User.query.filter_by(userid = request.values[<span class="hljs-string">'userid'</span>]).one_or_none()
+    <span class="hljs-comment"># Did we get a user?</span>
+    <span class="hljs-keyword">if</span> uid <span class="hljs-keyword">is</span> <span class="hljs-literal">None</span>:
+        <span class="hljs-keyword">return</span> <span class="hljs-string">"Invalid login - No userid provided"</span>
+    <span class="hljs-comment"># Does the password match?</span>
+    pw_attempt = request.values[<span class="hljs-string">'password'</span>]
+    <span class="hljs-keyword">if</span> uid.password != pw_attempt:
+        <span class="hljs-keyword">return</span> <span class="hljs-string">"Invalid login - Password incorrect"</span>
+    <span class="hljs-comment"># Create the session</span>
+    session[<span class="hljs-string">'userid'</span>] = uid.userid
+    session[<span class="hljs-string">'displayName'</span>] = uid.displayName
+    session[<span class="hljs-string">'avatar'</span>] = uid.avatar
+    print(<span class="hljs-string">"/login: USER LOGGED IN: "</span>,uid)
+    <span class="hljs-keyword">return</span> redirect(<span class="hljs-string">"/static/main.html"</span>)
+
+<span class="hljs-meta">@app.route("/whoami", methods=['GET', 'POST'])</span>
+<span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">who_am_i</span><span class="hljs-params">()</span>:</span>
+    <span class="hljs-keyword">if</span> <span class="hljs-string">'userid'</span> <span class="hljs-keyword">in</span> session:
+        <span class="hljs-keyword">return</span> jsonify({ 
+            <span class="hljs-string">'displayName'</span>: session[<span class="hljs-string">'displayName'</span>],
+            <span class="hljs-string">'userid'</span>: session[<span class="hljs-string">'userid'</span>],
+            <span class="hljs-string">'avatar'</span>: session[<span class="hljs-string">'avatar'</span>]
+        })
+    <span class="hljs-keyword">else</span>:
+        <span class="hljs-keyword">return</span> <span class="hljs-string">"error - not logged in"</span>
+</div></code></pre>
+<p>Edit <code>static/main.js</code>...</p>
+<pre class="hljs"><code><div><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getDisplayName</span>(<span class="hljs-params"></span>) </span>{
+    fetch(<span class="hljs-string">"/whoami"</span>).then(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">response</span>) </span>{
+        response.json().then(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">data</span>) </span>{
+            <span class="hljs-built_in">document</span>.querySelector(<span class="hljs-string">".hello"</span>).innerHTML = <span class="hljs-string">"Hello, "</span>+data.displayName+<span class="hljs-string">'.'</span>;
+        })
+    });
+}
+
+<span class="hljs-comment">// Once everything has finished loading, run the main() function</span>
+<span class="hljs-built_in">window</span>.onload=getDisplayName;
+</div></code></pre>
+<h2 id="week-5">Week 5</h2>
+<p>Save new messages to database</p>
+<pre class="hljs"><code><div><span class="hljs-comment"># Add to your imports...</span>
+<span class="hljs-keyword">from</span> datetime <span class="hljs-keyword">import</span> datetime
+
+<span class="hljs-comment"># New route to add...</span>
+<span class="hljs-meta">@app.route('/newmessage', methods=["POST","GET"])</span>
+<span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">new_message</span><span class="hljs-params">()</span>:</span>
+    <span class="hljs-keyword">if</span> <span class="hljs-string">'message'</span> <span class="hljs-keyword">in</span> request.values <span class="hljs-keyword">and</span> <span class="hljs-string">'name'</span> <span class="hljs-keyword">in</span> session:
+        new_message = Message(
+            userid=session[<span class="hljs-string">'userid'</span>], 
+            displayName=session[<span class="hljs-string">'displayName'</span>], 
+            ip=request.remote_addr, 
+            message=request.values[<span class="hljs-string">'message'</span>],
+            dateTime=datetime.utcnow())
+        db.session.add(new_message)
+        db.session.commit()
+        print(<span class="hljs-string">"Message from "</span>+session[<span class="hljs-string">'userid'</span>]+<span class="hljs-string">" at ip address "</span>+request.remote_addr+<span class="hljs-string">" saved"</span>)
+        print(request.values[<span class="hljs-string">'message'</span>])
+        <span class="hljs-keyword">return</span> <span class="hljs-string">"ok"</span>
+    <span class="hljs-keyword">else</span>:
+        <span class="hljs-keyword">return</span> <span class="hljs-string">"Error: Not logged in, or no message received"</span>
+</div></code></pre>
+<p>Edit <code>static/index.js</code> to send messages from the browser</p>
+<pre class="hljs"><code><div><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">sendMessage</span>(<span class="hljs-params">event</span>) </span>{
+    <span class="hljs-keyword">let</span> form = <span class="hljs-keyword">new</span> FormData();
+    <span class="hljs-keyword">let</span> mesgBox = <span class="hljs-built_in">document</span>.querySelector(<span class="hljs-string">"#messagetext"</span>).value;
+    <span class="hljs-keyword">if</span> (mesgBox.length &gt; <span class="hljs-number">0</span>) {
+        form.append(<span class="hljs-string">"message"</span>, mesgBox);
+        fetch(<span class="hljs-string">"/newmessage"</span>, {<span class="hljs-attr">method</span>: <span class="hljs-string">"POST"</span>, <span class="hljs-attr">body</span>: form}).then(<span class="hljs-function"><span class="hljs-params">response</span> =&gt;</span> {
+            response.text().then(<span class="hljs-function"><span class="hljs-params">data</span> =&gt;</span> {
+                <span class="hljs-built_in">console</span>.log(data);
+            })
+        }).catch(<span class="hljs-function"><span class="hljs-params">err</span> =&gt;</span> {
+            <span class="hljs-built_in">console</span>.log(err);
+        });
+        <span class="hljs-built_in">document</span>.querySelector(<span class="hljs-string">"#messagetext"</span>).value = <span class="hljs-string">''</span>;
+        <span class="hljs-built_in">document</span>.querySelector(<span class="hljs-string">"#messagetext"</span>).focus();
+    } <span class="hljs-keyword">else</span> {
+        alert(<span class="hljs-string">"Can't send empty message"</span>);
+    }
+}
+
+<span class="hljs-comment">// Create function main...</span>
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">main</span>(<span class="hljs-params"></span>) </span>{
+    getDisplayName(); 
+    <span class="hljs-built_in">document</span>.querySelector(<span class="hljs-string">"#messagebutton"</span>).addEventListener(<span class="hljs-string">"click"</span>, sendMessage);
+}
+
+<span class="hljs-comment">// Replace the existing window.onload with this...</span>
+<span class="hljs-built_in">window</span>.onload = main;
+</div></code></pre>
+<p>Edit <code>static/main.js</code> to allow the enter key to send messages (instead of having to use the button)</p>
+<pre class="hljs"><code><div>
+<span class="hljs-comment">// New function...</span>
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">checkForEnter</span>(<span class="hljs-params">event</span>) </span>{
+    <span class="hljs-keyword">if</span> (event.keyCode == <span class="hljs-number">13</span>) {
+        sendMessage(<span class="hljs-literal">null</span>);
+    }
+}
+
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">main</span>(<span class="hljs-params"></span>) </span>{
+    getDisplayName(); 
+    <span class="hljs-built_in">document</span>.querySelector(<span class="hljs-string">"#messagebutton"</span>).addEventListener(<span class="hljs-string">"click"</span>, sendMessage);
+    <span class="hljs-comment">// Add this line...</span>
+    <span class="hljs-built_in">document</span>.querySelector(<span class="hljs-string">'#messagetext'</span>).addEventListener(<span class="hljs-string">'keydown'</span>, checkForEnter);
+}
+</div></code></pre>
+<h2 id="week-6">Week 6</h2>
+<p>Get messages from Python</p>
+<pre class="hljs"><code><div><span class="hljs-meta">@app.route('/getmessages',methods=['GET'])</span>
+<span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">get_messages</span><span class="hljs-params">()</span>:</span>
+    <span class="hljs-keyword">if</span> <span class="hljs-string">'since'</span> <span class="hljs-keyword">in</span> request.args:
+        since = int(request.args[<span class="hljs-string">'since'</span>])
+    <span class="hljs-keyword">else</span>:
+        since = <span class="hljs-number">0</span>
+    msgs = Message.query.filter(Message.id &gt; since).order_by(Message.dateTime.desc()).limit(<span class="hljs-number">100</span>).all()
+    reply = []
+    <span class="hljs-keyword">for</span> msg <span class="hljs-keyword">in</span> msgs:
+        reply.insert(<span class="hljs-number">0</span>,msg.as_dict())
+    <span class="hljs-keyword">return</span> jsonify(reply)
+</div></code></pre>
+<p>Edit <code>static/main.js</code> to display messages on your HTML</p>
+<pre class="hljs"><code><div><span class="hljs-comment">// Add this variable declaration to the top of your Javascript...</span>
+<span class="hljs-keyword">var</span> mostRecentMessage = <span class="hljs-number">0</span>;
+
+<span class="hljs-comment">// New function...</span>
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getNewMessages</span>(<span class="hljs-params"></span>) </span>{
+    fetch(<span class="hljs-string">"/getmessages?since="</span>+mostRecent).then( <span class="hljs-function"><span class="hljs-params">response</span> =&gt;</span> {
+        response.json().then( <span class="hljs-function"><span class="hljs-params">data</span> =&gt;</span> {
+            <span class="hljs-built_in">console</span>.log(data);
+            <span class="hljs-keyword">if</span> (data.length &gt; <span class="hljs-number">0</span>) {
+                <span class="hljs-keyword">let</span> html = <span class="hljs-string">""</span>;
+                <span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> message <span class="hljs-keyword">of</span> data) {
+                    <span class="hljs-keyword">let</span> dt = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Date</span>(message.dateTime * <span class="hljs-number">1000</span>);
+                    <span class="hljs-keyword">let</span> dt_display = dt.toLocaleDateString() + <span class="hljs-string">" "</span> + dt.toLocaleTimeString();
+                    <span class="hljs-keyword">let</span> item = <span class="hljs-string">`
+                    &lt;div class='messageGrid'&gt;
+                        &lt;div class='messageAvatar'&gt;&lt;img src='/getavatar/<span class="hljs-subst">${message.userid}</span>'&gt;&lt;/div&gt;
+                        &lt;div class='messageName'&gt;<span class="hljs-subst">${message.displayName}</span> <span class="hljs-subst">${dt_display}</span>&lt;/div&gt;
+                        &lt;div class='messageContent'&gt;<span class="hljs-subst">${message.message}</span>&lt;/div&gt;
+                    &lt;/div&gt;
+                    `</span>;
+                    html = html + item;
+                    <span class="hljs-keyword">if</span> (message.id &gt; mostRecent) {
+                        mostRecent = message.id;
+                    }
+                }
+                <span class="hljs-built_in">document</span>.querySelector(<span class="hljs-string">"#chatcontent"</span>).innerHTML += html;
+                <span class="hljs-built_in">document</span>.querySelector(<span class="hljs-string">".container"</span>).scrollTop = <span class="hljs-built_in">document</span>.querySelector(<span class="hljs-string">".container"</span>).scrollHeight;
+            }
+        });
+    });
+}
+
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">main</span>(<span class="hljs-params"></span>) </span>{
+    getDisplayName(); 
+    <span class="hljs-built_in">document</span>.querySelector(<span class="hljs-string">"#messagebutton"</span>).addEventListener(<span class="hljs-string">"click"</span>, sendMessage);
+    <span class="hljs-built_in">document</span>.querySelector(<span class="hljs-string">'#messagetext'</span>).addEventListener(<span class="hljs-string">'keydown'</span>, checkForEnter);
+    <span class="hljs-comment">// Add this line...</span>
+    setInterval(getNewMessages, <span class="hljs-number">1000</span>);
+}
+</div></code></pre>
+<p>Get the avatar by updating <code>main.py</code></p>
+<ul>
+<li>Download the <code>avatar_placeholder.png</code> and place it in your project folder.</li>
+</ul>
+<pre class="hljs"><code><div><span class="hljs-meta">@app.route('/getavatar/&lt;userid&gt;', methods=['GET'])</span>
+<span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">get_avatar</span><span class="hljs-params">(userid)</span>:</span>
+    user = User.query.filter(User.userid == userid).one_or_none()
+    <span class="hljs-keyword">if</span> user <span class="hljs-keyword">is</span> <span class="hljs-keyword">not</span> <span class="hljs-literal">None</span> <span class="hljs-keyword">and</span> user.avatar != <span class="hljs-string">""</span>:
+        <span class="hljs-keyword">return</span> send_file(app.root_path + <span class="hljs-string">'/photos/'</span> + user.avatar)
+    <span class="hljs-keyword">else</span>:
+        <span class="hljs-keyword">return</span> send_file(app.root_path + <span class="hljs-string">'/static/avatar_placeholder.png'</span>)
+</div></code></pre>
+<ul>
+<li>Edit your <code>static/index.css</code> file by adding the following</li>
+</ul>
+<pre class="hljs"><code><div><span class="hljs-selector-class">.messageAvatar</span> <span class="hljs-selector-tag">img</span> {
+    <span class="hljs-attribute">width</span>: <span class="hljs-number">48px</span>; 
+    <span class="hljs-attribute">height</span>: <span class="hljs-number">48px</span>;
+}
+</div></code></pre>
+
+</body>
+</html>

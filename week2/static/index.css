@@ -83,7 +83,7 @@ input[type='button']:hover {
     padding: 5px;
     margin: 5px;
     display: grid;
-    grid-template-columns: 58px 1fr;
+    grid-template-columns: 42px 1fr;
     grid-template-rows: 1fr 1fr;
     gap: 0px 0px;
     grid-template-areas:
@@ -93,14 +93,10 @@ input[type='button']:hover {
   
 .messageAvatar { 
     grid-area: messageAvatar; 
-    width: 48px;
-    height: 48px;
+    width: 32px;
+    height: 32px;
     background-color: #fff;
     display: block;
-}
-
-.messageAvatar img {
-    width: 48px; height: 48px;
 }
 
 .messageName { 
@@ -127,30 +123,3 @@ input[type='button']:hover {
     display: table;
     clear: both;
 }
-
-.warning {
-    color: red;
-}
-
-.rightClickMenu {
-    display: none;
-    position: absolute;
-    top: 50px;
-    left: 50px;
-    background:#ddd;
-    border: 1px solid black;
-}
-
-.rightClickMenu div {
-    border: 1px solid black;
-}
-
-.rightClickMenu div:hover {
-    background: #ffffff;
-}
-
-.rightClickMenu div a {
-    text-decoration: none;
-    color: #0000bb;
-}
-

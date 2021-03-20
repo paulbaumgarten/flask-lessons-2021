@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Whatsthat</title>
+    <link rel="stylesheet" type="text/css" href="/static/index.css" media="screen"/>
+</head>
+<body>
+    <h1>Space admin</h1>
+    <div>
+        <form>
+            <div>Space ID</div><div>(can not be changed)</div>
+            <div>Display name</div><div></div>
+            <div>Category</div><div></div>
+            <div>Description</div><div></div>
+            <div>Owner</div><div></div>
+            <div>Joinable by?</div><div></div>
+            <div>Readable by?</div><div></div>
+            <div>Writable by?</div><div> (this is the default applied to new members. Override for individuals in the membership section below)</div>
+            <div>Status</div><div></div>
+            <div>Invite code</div><div></div>
+            <div>Save</div><div></div>
+        </form>
+    </div>
+    <h1>Membership</h1>
+    <div>
+        <div>Display name</div><div>Real name</div><div>Email</div><div>Tutor</div><div>Write access</div><div>Status</div>
+    </div>
+    <h1>Roles within a space</h1>
+    <p>New members:<ul>
+        <li>Can join a space that is joinable by 'all'</li>
+        <li>Can join a space that is joinable by 'inviteonly' correctly entering the invite code above</li>
+        <li>Can be added directly by the space owner</li>
+    </ul></p>
+    <p>Moderators:<ul>
+        <li>Can remove individual messages from this space (hides a message from all except the owner)</li>
+        <li>Can block members from the space (except the owner and admins)</li>
+        <li>Are only empowered within a given space (not across the entire system)</li>
+    </ul></p>
+    <p>Blocked users:<ul>
+        <li>will not even see the space exists. It will just disappear from their view entirely.</li>
+    </ul></p>
+    <p>Owners and admins:<ul>
+        <li>The owner can designate admins to help assist managing the space (typically other teachers).</li>
+        <li>Can designate moderators to assist managing the space (typically student leaders).</li>
+        <li>Are the only people with access to the space admin page.</li>
+        <li>Are the only people who can unblock members, undelete messages, revoke moderator access.</li>
+    </ul></p>
+    <div>
+        <div>Display name</div><div>Email</div><div>Tutor</div><div>Write</div>
+    </div>
+<!-- script type="text/javascript" src="/static/main.js"></script -->
+</body>
+</html>
+
+
+
+
+

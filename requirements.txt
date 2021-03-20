@@ -2,3 +2,4 @@ flask
 flask-socketio
 Flask-Session
 flask-sqlalchemy
+flask-bcrypt
