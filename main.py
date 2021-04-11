@@ -65,27 +65,28 @@ def user_login():
 @app.route('/register', methods=["POST"])
 def user_register():
     error = ""
-    # Was an avatar uploaded?
-    if request.files['avatar'].filename != '':
-        f = request.files['avatar']
-        dot = f.filename.rfind(".")
-        extension = f.filename[dot:].lower()
-        avatar = request.values['email'].replace("@","_at_") + extension
-        f.save(app.root_path + '/photos/' + avatar)
-    else:
-        avatar = ""
-    user = User(userid=request.values['userid'], 
-        displayName=request.values['displayName'], 
-        password=request.values['password'], # WARNING THIS IS NOT SECURE
-        email=request.values['email'], 
-        avatar=avatar)
-    try:
-        db.session.add(user)
-        db.session.commit()
-    except sqlalchemy.exc.IntegrityError as e:
-        print(e)
-        return errorMessage("Unable to register", error, "/static/register.html")
-    return redirect("/static/login.html")
+    if request.invitecode == "special":
+        # Was an avatar uploaded?
+        if request.files['avatar'].filename != '':
+            f = request.files['avatar']
+            dot = f.filename.rfind(".")
+            extension = f.filename[dot:].lower()
+            avatar = request.values['email'].replace("@","_at_") + extension
+            f.save(app.root_path + '/photos/' + avatar)
+        else:
+            avatar = ""
+        user = User(userid=request.values['userid'], 
+            displayName=request.values['displayName'], 
+            password=request.values['password'], # WARNING THIS IS NOT SECURE
+            email=request.values['email'], 
+            avatar=avatar)
+        try:
+            db.session.add(user)
+            db.session.commit()
+        except sqlalchemy.exc.IntegrityError as e:
+            print(e)
+            return errorMessage("Unable to register", error, "/static/register.html")
+        return redirect("/static/login.html")
 
 @app.route('/whoami')
 def whoami():
